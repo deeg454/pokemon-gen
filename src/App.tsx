@@ -15,9 +15,9 @@ function App() {
     const id = Math.floor(Math.random() * 1010)  + 1;
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await res.json();
-  
+  console.log(data);
     setPokemon({
-      name: data.name,
+      name: data.species.name,
       sprite: data.sprites.front_default,
       ability: data.abilities[0].ability.name
     });
@@ -62,6 +62,7 @@ function App() {
                <h2 className="font-bold text-3xl">{` ${shufflingPokemon.name.charAt(0).toUpperCase() + shufflingPokemon.name.slice(1)}`}</h2>
               <img src={shufflingPokemon?.sprite} alt="Shuffling..." className="w-60 mx-auto animate-spin" />
               <p>Shuffling...</p>
+
             </div>
         )
 
